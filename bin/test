@@ -6,13 +6,11 @@ site = Httpbench::Site.new(
   :host => "wiki.jbussdieker.com",
   :port => 80
 )
-page = site.new_page("/")
-test = Httpbench::Test.new(:duration => 60, :rps => 1)
+page = site.new_page(:path => "/")
+test = Httpbench::Test.new(:duration => 1, :rps => 1)
 puts "Running test..."
 test.run(page)
 puts "Waiting for results..."
-f = File.open("results.txt")
 test.results.each do |result|
-  f.puts result[:duration]
+  puts result[:duration]
 end
-f.close
