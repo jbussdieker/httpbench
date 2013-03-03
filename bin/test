@@ -7,11 +7,12 @@ site = Httpbench::Site.new(
   :port => 80
 )
 page = site.new_page("/")
-test = Httpbench::Test.new(:duration => 5, :rps => 5)
+test = Httpbench::Test.new(:duration => 60, :rps => 1)
 puts "Running test..."
 test.run(page)
 puts "Waiting for results..."
-results = test.results
-results.each do |result|
-  puts result[:duration]
+f = File.open("results.txt")
+test.results.each do |result|
+  f.puts result[:duration]
 end
+f.close
