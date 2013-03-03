@@ -1,6 +1,7 @@
 module Httpbench
   class Page
     def initialize(site, opts = {})
+      @site = site
       @path = opts[:path]
     end
 
