@@ -14,7 +14,8 @@ module Httpbench
       connection = client.connection
       response = connection.request(request)
       {
-        :duration => Time.new - started,
+        :timestamp => Time.now
+        :duration => Time.now - started,
         :connection => connection,
         :request => request,
         :response => response
