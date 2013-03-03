@@ -1,8 +1,7 @@
 module Httpbench
   class Page
-    def initialize(site, path)
-      @site = site
-      @path = path
+    def initialize(site, opts = {})
+      @path = opts[:path]
     end
 
     # Issue a request to the page

@@ -8,8 +8,8 @@ module Httpbench
       @address = opts[:address]
     end
 
-    def new_page(path)
-      Page.new(self, path)
+    def new_page(opts = {})
+      Page.new(self, opts)
     end
 
     def client
