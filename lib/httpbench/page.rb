@@ -13,9 +13,11 @@ module Httpbench
       request["Host"] = @site.host
       connection = client.connection
       response = connection.request(request)
+      ended = Time.now
       {
-        :timestamp => Time.now,
-        :duration => Time.now - started,
+        :started => started,
+        :ended => ended,
+        :duration => ended - started,
         :connection => connection,
         :request => request,
         :response => response
