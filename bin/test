@@ -1,0 +1,17 @@
+#!/usr/bin/env ruby
+require 'httpbench'
+
+site = Httpbench::Site.new(
+  :address => '54.244.135.43',
+  :host => "wiki.jbussdieker.com",
+  :port => 80
+)
+page = site.new_page("/")
+test = Httpbench::Test.new(:duration => 5, :rps => 5)
+puts "Running test..."
+test.run(page)
+puts "Waiting for results..."
+results = test.results
+results.each do |result|
+  puts result[:duration]
+end
